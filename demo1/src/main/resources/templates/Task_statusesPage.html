@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statuses</title>
+</head>
+<body>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+    </tr>
+    <tr th:each="task_status : ${task_statuses}">
+        <td th:text="${task_status.status_id}"></td>
+        <td th:text="${task_status.status_name}"></td>
+    </tr>
+</table>
+<form method="POST" action="/Task_statuses">
+    <input class="input" type="text" id="status_name" name="status_name"  />
+    <button >Добавить</button >
+</form>
+<form th:method="PATCH" th:action="@{/Task_statuses}" th:object="${task_statuses}">
+    <input class="input" type="text" id="status_idUP" name="status_idUP"  />
+    <input class="input" type="text" id="status_nameUP" name="status_nameUP"  />
+    <button >Изменить</button >
+</form>
+<form th:method="delete" th:action="@{/Task_statuses}" th:object="${task_statuses}">
+    <input class="input" type="text" id="status_idDel" name="status_idDel"  />
+    <button>Удалить</button >
+</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Priorities</title>
+</head>
+<body>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+    </tr>
+    <tr th:each="task_prioriti : ${task_priorities}">
+        <td th:text="${task_prioriti.priority_id}"></td>
+        <td th:text="${task_prioriti.priority_name}"></td>
+    </tr>
+</table>
+<form method="POST" action="/Task_priorities">
+    <input class="input" type="text" id="priority_name" name="priority_name"  />
+    <button >Добавить</button >
+</form>
+<form th:method="PATCH" th:action="@{/Task_priorities}" th:object="${task_priorities}">
+    <input class="input" type="text" id="priority_idUP" name="priority_idUP"  />
+    <input class="input" type="text" id="priority_nameUP" name="priority_nameUP"  />
+    <button >Изменить</button >
+</form>
+<form th:method="delete" th:action="@{/Task_priorities}" th:object="${task_priorities}">
+    <input class="input" type="text" id="priority_idDel" name="priority_idDel"  />
+    <button>Удалить</button >
+</form>
+</body>
+</html>

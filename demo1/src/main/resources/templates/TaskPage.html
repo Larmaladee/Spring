@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>PRIORITY</th>
+        <th>STATUS</th>
+        <th>PROJECT</th>
+        <th>EMPLOEE</th>
+    </tr>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.task_id}"></td>
+        <td th:text="${task.title}"></td>
+        <td th:if="${task.Task_priorities}" th:text="${task.Task_priorities.priority_id}"></td>
+        <td th:if="${task.Task_statuses}" th:text="${task.Task_statuses.status_id}"></td>
+        <td th:if="${task.projects}" th:text="${task.projects.project_id}"></td>
+        <td th:if="${task.Personal}" th:text="${task.Personal.user_id}"></td>
+    </tr>
+</table>
+<form method="POST" action="/Task">
+    <input class="input" type="text" id="title" name="title"  />
+    <input class="input" type="text" id="priority_id" name="priority_id"  />
+    <input class="input" type="text" id="status_id" name="status_id"  />
+    <input class="input" type="text" id="project_id" name="project_id"  />
+    <input class="input" type="text" id="user_id" name="user_id"  />
+    <button >Добавить</button >
+</form>
+<form th:method="PATCH" th:action="@{/Task}" th:object="${tasks}">
+    <input class="input" type="text" id="task_idUP" name="task_idUP"  />
+    <input class="input" type="text" id="titleUP" name="titleUP"  />
+    <input class="input" type="text" id="priority_idUP" name="priority_idUP"  />
+    <input class="input" type="text" id="status_idUP" name="status_idUP"  />
+    <input class="input" type="text" id="project_idUP" name="project_idUP"  />
+    <input class="input" type="text" id="user_idUP" name="user_idUP"  />
+    <button >Изменить</button >
+</form>
+<form th:method="delete" th:action="@{/Task}" th:object="${tasks}">
+    <input class="input" type="text" id="task_idDel" name="task_idDel"  />
+    <button>Удалить</button >
+</form>
+</body>
+</html>

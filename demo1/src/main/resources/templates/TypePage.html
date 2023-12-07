@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Type</title>
+</head>
+<body>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+    </tr>
+    <tr th:each="type : ${types}">
+        <td th:text="${type.category_id}"></td>
+        <td th:text="${type.category_name}"></td>
+    </tr>
+</table>
+<form method="POST" action="/Type">
+    <input class="input" type="text" id="category_name" name="category_name"  />
+    <button >Добавить</button >
+</form>
+<form th:method="PATCH" th:action="@{/Type}" th:object="${types}">
+    <input class="input" type="text" id="category_idUP" name="category_idUP"  />
+    <input class="input" type="text" id="category_nameUP" name="category_nameUP"  />
+    <button >Изменить</button >
+</form>
+<form th:method="delete" th:action="@{/Type}" th:object="${types}">
+    <input class="input" type="text" id="category_idDel" name="category_idDel"  />
+    <button>Удалить</button >
+</form>
+</body>
+</html>
